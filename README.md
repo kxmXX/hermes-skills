@@ -1,52 +1,27 @@
 # SACOR — Stable Adaptive Cognitive Orchestration Runtime
 
-## What is SACOR?
+**SACOR is NOT a skill.** It is a **system-level runtime instruction** injected directly into the orchestrator's system prompt. It governs how specialized skills are routed, validated, and stabilized.
 
-SACOR is a **governance runtime layer** — not a specialized skill, not a tool, not an agent. It sits above all specialized skills and orchestrates how they execute.
+## Repository Structure
 
 ```
-SYSTEM / CORE RUNTIME     → SACOR
-ORCHESTRATION / ROUTING   → delegation, planner, router, memory
-SPECIALIZED SKILLS        → coding, research, writing, legal
-TOOLS                     → web, APIs, databases, execution
+SACOR.md          — Full SACOR specification (standalone reference)
+README.md          — This file
 ```
 
-## Core Principle
+## Where SACOR lives
 
-> *"Use the minimum governance required to preserve reliable cognition."*
+In Hermes Agent, SACOR is configured in `hermes_system.md` (the system prompt file) — NOT in the `skills/` directory. Skills are for specialized execution. SACOR is for governance, routing, and orchestration.
 
-SACOR decides:
-- How many agents, which AGP level, what architecture
-- What memory, what verification, what routing
-- When to escalate, when to stop, when to compress
+## Quick Reference
 
-Specialized skills execute within their scope. SACOR never lives inside sub-agents.
+**AGP (Adaptive Governance Protocol):** Lite → Lite Reinforced → Standard → Strict → Forensic
 
-## AGP — Adaptive Governance Protocol
+**Rule of 3:** 1st failure = correct + re-audit. 2nd = decompose + escalate. 3rd = forced stop.
 
-Five levels of governance that scale dynamically with task complexity:
+**Epistemic markers:** [KNOWN] [PROBABLE] [ASSUMED] [UNKNOWN]
 
-| AGP Level | When to use |
-|-----------|-------------|
-| **Lite** | Simple tasks, low criticality |
-| **Lite Reinforced** | Moderate ambiguity, light orchestration |
-| **Standard** | Structured research, moderate complexity |
-| **Strict** | High-risk chains, sensitive systems |
-| **Forensic** | Finance, legal, security, critical audit |
-
-## Key features
-
-- **Complexity pre-scoring** — estimates governance floor before execution
-- **Dynamic orchestration** — escalates or reduces governance mid-task
-- **Hysteresis** — prevents oscillation, requires stability before reducing governance
-- **Transverse validation** — cross-block coherence checks
-- **Adversarial self-critique** — periodic challenge mode to detect blind spots
-- **Cold memory** — archives failed attempts and deprecated hypotheses
-- **Token budget management** — forced compression at 80%, emergency review at 95%
-
-## Critical rule
-
-**NEVER inject SACOR into sub-agents.** Each sub-agent gets a simple, focused prompt. Only the main orchestrator carries SACOR.
+**Token budget:** Complexity 1-3: <20% | 4-7: <30% | 8-12: <40% | 13+: monitored
 
 ---
 
